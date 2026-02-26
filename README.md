@@ -1,6 +1,6 @@
 ---
 
-## ✅ `README.md` (PT-BR)
+## ✅ `Português ` (PT-BR)
 
 
 <div align="center">
@@ -9,7 +9,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
-**🌎 Idioma:** **PT-BR** | [EN](./README.en.md)
+**🌎 Idioma:** **PT-BR** | [EN](#english-version)
 
 </div>
 
@@ -242,7 +242,7 @@ Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
 📫 Contato: [seuemail@exemplo.com](mailto:seuemail@exemplo.com)
 
 
-## ✅ `README.en.md` (English)
+## ✅ `English Version` (English)
 
 <div align="center">
 
@@ -250,7 +250,7 @@ Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
-**🌎 Language:** [PT-BR](./README.md) | **EN**
+**🌎 Language:** [PT-BR](#portugues-version) | **EN**
 
 </div>
 
