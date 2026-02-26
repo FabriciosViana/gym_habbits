@@ -1,5 +1,3 @@
-Aí vai **os 2 README completos em Markdown**, prontos pra **copy/paste**, com um “seletor” no topo pra alternar entre **PT-BR** e **EN**.
-
 ---
 
 ## ✅ `README.md` (PT-BR)
