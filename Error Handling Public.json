@@ -1,0 +1,275 @@
+{
+  "name": "Error Handling Backup",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        0
+      ],
+      "id": "df1722ad-d0dc-4cde-9ba8-90a14dbb8758",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "08fa9125-c378-46cd-8cbf-b75c3ed237a9",
+              "leftValue": "={{ $json.execution.error.description }}",
+              "rightValue": "already exists",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -32,
+        0
+      ],
+      "id": "ae416c86-03db-44ba-9a18-a59692778771",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "messageText": "📛 Aí não, pae 😤\nTu já fez check-in hoje. Só 1 por dia, amanhã tu volta pra amassar 💪🔥",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        240,
+        -48
+      ],
+      "id": "757734d6-5bcc-46e1-a6e2-a21579bbdf1f",
+      "name": "Enviar texto",
+      "credentials": {
+        "evolutionApi": {
+          "id": "74tSII5siuxLqR3D",
+          "name": "Evolution account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Error Trigger": [
+      {
+        "json": {
+          "execution": {
+            "id": "5091",
+            "url": "https://n8n.fabriciovianadev.com.br/workflow/Er73aHB85065gqz1t8rOI/executions/5091",
+            "error": {
+              "level": "warning",
+              "tags": {},
+              "description": "Key (challenge_id, participant_id, checkin_date)=(f79dd6dd-5265-4dea-a315-94828eab9b1a, 1931680f-658e-4f1a-b052-5afd38824579, 2024-06-01) already exists.",
+              "timestamp": 1771616245639,
+              "context": {},
+              "functionality": "regular",
+              "name": "NodeOperationError",
+              "node": {
+                "parameters": {
+                  "descriptionType": "auto",
+                  "resource": "database",
+                  "operation": "insert",
+                  "schema": {
+                    "__rl": true,
+                    "mode": "list",
+                    "value": "public"
+                  },
+                  "table": {
+                    "__rl": true,
+                    "value": "checkins",
+                    "mode": "list",
+                    "cachedResultName": "checkins"
+                  },
+                  "columns": {
+                    "mappingMode": "defineBelow",
+                    "value": {
+                      "challenge_id": "f79dd6dd-5265-4dea-a315-94828eab9b1a",
+                      "participant_id": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('participant_id', ``, 'string') }}",
+                      "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('message', ``, 'string') }}",
+                      "checkin_date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('checkin_date', ``, 'string') }}",
+                      "week_start_date": "2026-02-01T00:00:00",
+                      "week_number": 2
+                    },
+                    "matchingColumns": [
+                      "id"
+                    ],
+                    "schema": [
+                      {
+                        "id": "id",
+                        "displayName": "id",
+                        "required": false,
+                        "defaultMatch": true,
+                        "display": true,
+                        "type": "number",
+                        "canBeUsedToMatch": true,
+                        "removed": true
+                      },
+                      {
+                        "id": "challenge_id",
+                        "displayName": "challenge_id",
+                        "required": true,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "participant_id",
+                        "displayName": "participant_id",
+                        "required": true,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "message",
+                        "displayName": "message",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "string",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "checkin_at",
+                        "displayName": "checkin_at",
+                        "required": false,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "dateTime",
+                        "canBeUsedToMatch": true,
+                        "removed": true
+                      },
+                      {
+                        "id": "checkin_date",
+                        "displayName": "checkin_date",
+                        "required": true,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "dateTime",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "week_number",
+                        "displayName": "week_number",
+                        "required": true,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "number",
+                        "canBeUsedToMatch": true
+                      },
+                      {
+                        "id": "week_start_date",
+                        "displayName": "week_start_date",
+                        "required": true,
+                        "defaultMatch": false,
+                        "display": true,
+                        "type": "dateTime",
+                        "canBeUsedToMatch": true
+                      }
+                    ],
+                    "attemptToConvertTypes": false,
+                    "convertFieldsToString": false
+                  },
+                  "options": {}
+                },
+                "type": "n8n-nodes-base.postgresTool",
+                "typeVersion": 2.6,
+                "position": [
+                  1296,
+                  128
+                ],
+                "id": "cb8549f6-3cb2-4339-b0bd-76b6e2c7442b",
+                "name": "adicionar_checkin",
+                "credentials": {
+                  "postgres": {
+                    "id": "AUgaD5CKNBa1xYiY",
+                    "name": "GymRabbit"
+                  }
+                },
+                "rewireOutputLogTo": "ai_tool"
+              },
+              "messages": [],
+              "message": "duplicate key value violates unique constraint \"ux_checkins_one_per_day\"",
+              "stack": "NodeOperationError: duplicate key value violates unique constraint \"ux_checkins_one_per_day\"\n    at parsePostgresError (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Postgres/v2/helpers/utils.ts:123:9)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Postgres/v2/helpers/utils.ts:267:19\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at runQueriesAndHandleErrors (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Postgres/v2/helpers/utils.ts:663:21)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Postgres/v2/actions/database/insert.operation.ts:265:9)\n    at ExecuteContext.router (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Postgres/v2/actions/router.ts:41:17)\n    at ExecuteContext.execute (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-nodes-base@file+packages+nodes-base_@aws-sdk+credential-providers@3.808.0_asn1.js@5_8da18263ca0574b0db58d4fefd8173ce/node_modules/n8n-nodes-base/nodes/Postgres/v2/PostgresV2.node.ts:26:10)\n    at WorkflowExecute.executeNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1039:8)\n    at WorkflowExecute.runNode (/usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1218:11)\n    at /usr/local/lib/node_modules/n8n/node_modules/.pnpm/n8n-core@file+packages+core_@opentelemetry+api@1.9.0_@opentelemetry+exporter-trace-otlp_4dbefa9881a7c57a9e05a20ce4387c10/node_modules/n8n-core/src/execution-engine/workflow-execute.ts:1655:27"
+            },
+            "lastNodeExecuted": "adicionar_checkin",
+            "mode": "webhook",
+            "executionContext": {
+              "version": 1,
+              "establishedAt": 1771616237018,
+              "source": "webhook",
+              "triggerNode": {
+                "name": "Webhook",
+                "type": "n8n-nodes-base.webhook"
+              }
+            }
+          },
+          "workflow": {
+            "id": "Er73aHB85065gqz1t8rOI",
+            "name": "GymRabbit"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Enviar texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "0369d630-216a-4db6-99ba-873de8312926",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "26b9e77a13fd3ea1d08f4039cb5d1cb993ab19ff1f0975cf4d560388c3e58d21"
+  },
+  "id": "qrnnvh9GgPX7NCPD",
+  "tags": []
+}
